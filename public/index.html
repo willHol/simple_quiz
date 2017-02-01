@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+		    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		    <title>Simple Quiz!</title>
+
+		    <!-- Bootstrap -->
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		    <style>
+		    	#error {
+		    		margin-top: 10px;
+		    		padding-left: 10px;
+		    	}
+		    	#Retry {
+		    		margin-bottom: 10px;
+		    	}
+		    	 #counter {
+		    		float: right;
+		    		margin-top: 0px;
+		    		margin-left: 10px;
+		    	}
+		    	#add {
+		    		float: right;
+		    		margin-top: 25px;
+		    	}
+		    	#delete {
+		    		float: right;
+		    		margin-top: 25px;
+		    		margin-left: 10px;
+		    	}
+		    </style>
+
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<form action="add.html">
+				<button type="submit" class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-remove-sign"></span> Delete All</button>
+
+				<button type="submit" class="btn btn-success" id="add" href="/button"><span class="glyphicon glyphicon-plus"></span> Add</button>
+			</form>	
+			<h1>Simple quiz!</h1>
+			<hr>
+			<h5 id="counter"></h5>
+
+			<!-- questions will appear here in a div -->
+
+			<button class="btn btn-warning" id="previous">Previous</button>
+			<button class="btn btn-primary" id="next">Next</button>		
+		</div>
+		
+	</body>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</html>

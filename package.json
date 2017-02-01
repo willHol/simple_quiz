@@ -1,0 +1,12 @@
+{
+  "name": "simple_quiz",
+  "version": "1.0.0",
+  "description": "A simple quiz app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "William Holmes",
+  "license": "ISC"
+}
