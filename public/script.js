@@ -157,6 +157,7 @@ function previousQuestion() {
 		questionNum--;
 		var answer = answers[questionNum];
 		var question = allQuestions[questionNum];
+		$('#counter').text((questionNum + 1) + '/' + maxScore);
 
 		// Load elements
 		removeQuestions();
