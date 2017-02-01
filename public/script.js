@@ -130,7 +130,7 @@ function nextQuestion() {
 		$(body).append('<button class="btn btn-success" id="Retry">Retry</button>');
 		
 		if (score == maxScore)
-			$('.container').append('<div class="alert alert-warning" id="warning">Congratulations you got all the questions right!</div>');
+			$('.container').append('<div class="alert alert-warning" id="warning"><strong>Congratulations</strong> you got all the questions right!</div>');
 		// else {
 		// 	$('.container').append('<div class="alert alert-warning"><h3>Wrong Answers:</h3><ul class="list">');
 		// 	wrong.forEach(function(question) {
