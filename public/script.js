@@ -200,13 +200,15 @@ $('#delete').on('click', function() {
 	});
 });
 
-if (allQuestions.length)
-	init();
-else {
-	$('#next').remove();
-	$('#previous').remove();
-	$('.container').append('<div class="alert alert-info"><strong>Pleasus</strong> add some questions.</div>')
-}
+$document.ready(function() {
+	if (allQuestions.length)
+		init();
+	else {
+		$('#next').remove();
+		$('#previous').remove();
+		$('.container').append('<div class="alert alert-info"><strong>Pleasus</strong> add some questions.</div>')
+	}
+})
 
 
 // $(function() {
