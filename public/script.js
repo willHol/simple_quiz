@@ -1,3 +1,6 @@
+$('#next').hide();
+$('#previous').hide();
+
 var allQuestions = getJSON('JSON');
 
 function getJSON(path) {
@@ -200,15 +203,15 @@ $('#delete').on('click', function() {
 	});
 });
 
-$document.ready(function() {
-	if (allQuestions.length)
-		init();
-	else {
-		$('#next').remove();
-		$('#previous').remove();
-		$('.container').append('<div class="alert alert-info"><strong>Pleasus</strong> add some questions.</div>')
-	}
-})
+if (allQuestions.length) {
+	init();
+	$('#next').show();
+	$('#previous').show();
+} else {
+	$('#next').remove();
+	$('#previous').remove();
+	$('.container').append('<div class="alert alert-info"><strong>Pleasus</strong> add some questions.</div>')
+}
 
 
 // $(function() {
