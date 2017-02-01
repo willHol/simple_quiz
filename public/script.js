@@ -1,5 +1,4 @@
-$('#next').hide();
-$('#previous').hide();
+
 
 var allQuestions = getJSON('JSON');
 
@@ -210,7 +209,7 @@ if (allQuestions.length) {
 } else {
 	$('#next').remove();
 	$('#previous').remove();
-	$('.container').append('<div class="alert alert-info"><strong>Pleasus</strong> add some questions.</div>')
+	$('<div class="alert alert-info"><strong>Pleasus</strong> add some questions.</div>').hide().appendTo('.container').fadeIn();
 }
 
 
