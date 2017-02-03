@@ -32,6 +32,11 @@ $('#submit').on('click', function() {
 					$(this).remove();
 				});
 			}, 2000);
+			question.val('');
+			$('#choices').find('input').each(function() {
+				$(this).val('');
+			});
+			generateList();
 		}
 	});
 });
