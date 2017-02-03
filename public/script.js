@@ -1,5 +1,3 @@
-
-
 var allQuestions = getJSON('JSON');
 
 function getJSON(path) {
