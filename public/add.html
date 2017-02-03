@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -14,6 +15,10 @@
 		    		margin-top: 10px;
 		    		padding-left: 10px;
 		    	}
+		    	#error {
+		    		margin-top: 10px;
+		    		padding-left: 10px;
+		    	}
 		    	#answer {
 		    		width: 50%;
 		    	}
@@ -26,7 +31,6 @@
 	</head>
 
 	<body>
-		
 		<div class="container">
 			<form action="/">
 				<button type="submit" class="btn btn-default" id="back"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
@@ -37,13 +41,14 @@
 
 			<h4>Question: </h4>
 			<div id="question">
-				<label><input type="text" class="form-control"></input></label>
+				<label><input type="text" class="form-control"></label>
 			</div>
 			
 			<h4>Options:</h4>
 			<div id="choices">
-				<label><input type="text" class="form-control"></label><br>
-				<label><input type="text" class="form-control"></label><br>
+				<!-- Enclosing div helps to smooth animation -->
+				<div><label><input type="text" class="form-control"></label><br></div>
+				<div><label><input type="text" class="form-control"></label><br></div>
 			</div>
 
 			<h4>Correct Answer:</h4>
@@ -61,10 +66,9 @@
 			<button class="btn btn-primary" id="submit"><span class="glyphicon glyphicon-ok"></span> Submit</button>	
 		</div>
 		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="add.js"></script>
+	
 	</body>
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="add.js"></script>
 </html>

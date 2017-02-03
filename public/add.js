@@ -1,7 +1,13 @@
+// Initialise
 var question = $('#question').find('input');
 var length = 2;
+generateList();
 
+// Submits a PUT request to the server, populating the request body with the input fields
 $('#submit').on('click', function() {
+	if (!validate())
+		return ;
+
 	var choices = $('#choices').find('input');
 	var choicesArr = [];
 
@@ -10,10 +16,10 @@ $('#submit').on('click', function() {
 	});
 
 	var newQuestion = {
-		question: question.val(),
+		question: questionMark(question.val()),
 		choices: choicesArr,
 		correctAnswer: +$('#answer select').val()
-	}
+	};
 
 	$.ajax('JSON', {
 		method: 'PUT',
@@ -25,40 +31,98 @@ $('#submit').on('click', function() {
 				$('#success').fadeOut('slow', function() {
 					$(this).remove();
 				});
-			}, 2000)
+			}, 2000);
 		}
 	});
 });
 
+// Adds additional answer box
 $('#add').on('click', function() {
-	$('<label><input type="text" class="form-control"></label><br>').hide().appendTo('#choices').slideDown('fast').focus();
+	$('<div><label><input type="text" class="form-control"></label><br><div>').hide().appendTo('#choices').slideDown('fast', function() {
+		$('#choices input').last().focus();
+	});
 	length++;
 	generateList();
 });
+
+// Removes an answer box
 $('#remove').on('click', function() {
-	if ($('#choices input').length > 2) {
-		$('#choices input').last().slideUp('fast', function() {
-			$(this.remove())
+	var choices = $('#choices > div');
+
+	if (choices.length > 2) {
+		choices.last().slideUp('fast', function() {
+			$(this).remove();
 		});
-		$('#choices br').last().remove();
 		length--;
 		generateList();
 	}
 });
 
+// Populates the correct answer selection menu
 function generateList() {
 	var list = $('#answer select');
-
+	var choices = $('#choices input');
 	list.empty();
 
-	for (var i = 1; i <= length; i++) {
-		var text = $('#choices input').eq(i - 1).val();
+	choices.on('blur', function() {
+		generateList();
+	});
 
-		$('#choices input').on('blur', function() {
-			generateList();
-		});
+	for (var i = 1; i <= length; i++) {
+		var text = choices.eq(i - 1).val();
 		$('<option>' + text + '</option>').appendTo(list).attr('value', i - 1);
 	}
 }
 
-generateList();
+// Validates that the inputs are not blank
+function validate() {
+	var empty = false;
+
+	if (question.val().length < 1) {
+		highlight(question);
+		empty = true;
+	}
+
+	$('#choices').find('input').each(function() {
+		if ($(this).val().length < 1) {
+			empty = true;
+			highlight($(this));
+		}
+	});
+
+	if (empty) {
+		appendError();
+		return false;
+	} else {
+		return true;
+	}
+}
+
+// Warns the user about invalid input
+function appendError() {
+	$('.container').append('<div id="error" class="bg-danger">Please fill in <strong>all</strong> the fields.</div>');
+		setTimeout(function() {
+			$('#error').fadeOut('slow', function() {
+				$(this).remove();
+			});
+	}, 2000);
+}
+
+// Appends the has-error class and adds listeners to remove it
+function highlight(elt) {
+	elt.closest('div').addClass('has-error');
+
+	elt.on('blur', function() {
+		if (elt.val().length) {
+			elt.closest('div').removeClass('has-error');
+			elt.off('blur');
+		}
+	});
+}
+
+// Appends a question mark to the question if it does not already have one
+function questionMark(string) {
+	if (!/[?]$/.test(string))
+		string = string.concat('?');
+	return string;
+}
