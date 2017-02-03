@@ -110,7 +110,7 @@ function appendError() {
 			$('#error').fadeOut('slow', function() {
 				$(this).remove();
 			});
-	}, 2000);
+	}, 4000);
 }
 
 // Appends the has-error class and adds listeners to remove it
