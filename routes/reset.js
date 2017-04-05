@@ -1,17 +1,18 @@
-var express = require('express');
-var fs = require('fs');
+const express = require('express');
+const fs = require('fs');
 
-var router = express.Router();
+const router = express.Router();
 
-router.delete('/', function(req, res) {
-	fs.writeFile('questions.json', JSON.stringify([]), function(err) {
-		if (err)
-			console.log(err);
-		else
-			console.log("Succesfully wiped questions.json");
-	});
-	
-	res.end();
+router.delete('/', (req, res) => {
+  fs.writeFile('questions.json', JSON.stringify([]), (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Succesfully wiped questions.json');
+    }
+  });
+
+  res.end();
 });
 
 module.exports = router;

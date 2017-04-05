@@ -1,30 +1,31 @@
-var express = require('express');
-var fs = require('fs');
+const express = require('express');
+const fs = require('fs');
 
-var router = express.Router();
+const router = express.Router();
 
-router.get('/', function(req, res) {
-	delete require.cache[require.resolve('../questions')];
-	var questions = require('../questions');
-	
-	res.json(questions);
+router.get('/', (req, res) => {
+  delete require.cache[require.resolve('../questions')];
+  const questions = require('../questions');
+
+  res.json(questions);
 });
 
-router.put('/', function(req, res) {
-	delete require.cache[require.resolve('../questions')];
-	var questions = require('../questions');
-	var newQuestion = req.body;
+router.put('/', (req, res) => {
+  delete require.cache[require.resolve('../questions')];
+  const questions = require('../questions');
+  const newQuestion = req.body;
 
-	questions.push(newQuestion);
+  questions.push(newQuestion);
 
-	fs.writeFile('questions.json', JSON.stringify(questions), function(err) {
-		if (err)
-			console.log(err);
-		else
-			console.log("Succesfully wrote to questions.json");
-	});
+  fs.writeFile('questions.json', JSON.stringify(questions), (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Succesfully wrote to questions.json');
+    }
+  });
 
-	res.end();
+  res.end();
 });
 
 module.exports = router;
